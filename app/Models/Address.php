@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Address extends Model
+{
+    use HasFactory;
+
+    protected $table = 'addresses';
+    protected $fillable = [
+        'line_one',
+        'line_two',
+        'postcode',
+        'district',
+        'state',
+        'country',
+    ];
+
+    /**
+     * @return HasMany
+     */
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+}
